@@ -104,16 +104,16 @@ Please see the Figure below for a summary of our results:
 
 To explore the impact of the magnitude of positional encodings we multiply the positional encodings from the original [transformer paper](https://arxiv.org/abs/1706.03762) by a scaling factor. Where pos is the position of the token in the sequence, i is the dimension within the embedding vector and d_model is the total dimension of the embedding: 
 
-```math
+$$
 PE_{(pos, 2i)} = \sin(pos / 10000^{2i / d_{\text{model}}}) \\
 PE_{(pos, 2i+1)} = \cos(pos / 10000^{2i / d_{\text{model}}})
-```
+$$
 
 With the scaling factor added these equations for positional encoding simply become: 
 
-```math
+$$
 PE_{(pos, 2i)} = ScalingFactor*\sin(pos / 10000^{2i / d_{\text{model}}}) \\
 PE_{(pos, 2i+1)} = ScalingFactor*\cos(pos / 10000^{2i / d_{\text{model}}})
-```
+$$
 
 ---
