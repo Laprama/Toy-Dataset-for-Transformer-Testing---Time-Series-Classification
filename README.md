@@ -21,6 +21,27 @@ I have created two binary classification tasks using sequences of 16 tokens. Eac
 For sequence generation we split the 25 Embedding dimensions into 5 sections as follows : 0-5 as V.Low, 5-10 as Low, 10-15 as Medium, 15-20 as High and 20-25 as V.High.
 To begin a sequence a random section out of the 5 is selected to place the mean / peak of the Gaussian. A random position within the chosen section is then selected to place the exact mean of the Gaussian. For example Low could be chosen first within the sections and then 3.2 chosen as the position within the section to place the Gaussian mean. The token is then generated with the specified gaussian mean and gaussian noise added. To simulate some time dependancy each subsequent token mean will be in either the same section, one section lower or one section higher with equal probability. Therefore if one token has a mean in the Low section then a subsequent token can only have a mean in the V.Low, Low or Medium sections.
 
+### Sequence Generation
+
+To give the sequences a logical structure, tokens are generated according to a simple set of rules. The process is designed to simulate time-dependency, where each token's characteristics are related to the previous one. The core rules are described below, slight modifications of these core rules are then implemented to generate the classes for the datasets.
+
+First, the 25 embedding dimensions are split into five distinct sections:
+* V.Low: Dimensions 0-5
+* Low: Dimensions 5-10
+* Medium: Dimensions 10-15
+* High: Dimensions 15-20
+* V.High: Dimensions 20-25
+
+A sequence is then generated step-by-step:
+1. Generating the First Token: To start a sequence, a section is chosen at random (e.g., Low). A random position is then selected within that section (e.g., 7.2) to place the peak of the Gaussian, the token is then generated per the token generation figure (above).
+
+2. Generating Subsequent Tokens: To create the next token, a new section is chosen based on the previous one. The new section has equal probability chance of having the gaussian peak in either ; the same section, the section immediately below or the section immediately above. This rule ensures that the sequences have some tokenwise time dependancy as opposed to random jumps across the embedding space.
+
+Example sequences generated following this procedure are shown in the Figure below where the x-axis is the token number, y-axis is embedding dimension and the value of each token dimension is shown with shading per the key: 
+
+![Example Sequences](example_sequences.png)
+
+
 #### Task 1 (Easy Task)
 This task tests if a model can spot a simple, repeated pattern.
 
