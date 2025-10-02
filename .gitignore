@@ -1,0 +1,7 @@
+# Ignore the generated datasets (.pkl files - too large for github) 
+*.pkl
+
+# Ignore notebooks, checkpoints and python bytecode cache
+*.ipynb
+__pycache__/
+.ipynb_checkpoints/
