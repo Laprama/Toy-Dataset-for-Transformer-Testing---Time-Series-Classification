@@ -48,7 +48,10 @@ This task tests if a model can spot a simple, repeated pattern.
 
 This task is more difficult because the the positions at which the repeated patterns occur changes within each class instead of staying fixed.
 
-* Class 1:  A core pattern of 13 tokens (5 random, then 3 random, then the first 5 repeated) is placed within the 16-token sequence. This leaves 3 "padding" tokens that can be placed at the beginning or end of the sequence. Therefore a sequence from this class could be 2 padding - 5 random - 3 random - 5 repeated - 1 padding Or 3 padding - 5 random - 3 random - 5 repeated etc..
+* Class 1:  A core pattern of 13 tokens (5 random, then 3 random, then the first 5 repeated) is placed within the 16-token sequence. This leaves 3 "padding" tokens that can be placed at the beginning or end of the sequence. Therefore a sequence from this class could be:
+2 padding - 5 random - 3 random - 5 repeated - 1 padding  
+3 padding - 5 random - 3 random - 5 repeated 
+1 padding - 5 random - 3 random - 5 repeated - 2 padding etc..
 
 * Class 2:  A different core pattern of 13 tokens (4 random, then 5 random, then the first 4 repeated) is also placed within the 16-token sequence with 3 "padding" tokens.
 
